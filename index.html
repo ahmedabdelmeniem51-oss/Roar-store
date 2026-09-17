@@ -12,15 +12,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* ========== RESET ========== */
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-    /* الألوان الجديدة - ذهبي أفخم */
     --gold: #F4D03F;
     --gold-light: #FEF9E7;
     --gold-dark: #B7950B;
@@ -29,35 +23,23 @@
     --honey-dark: #B8860B;
     --amber: #FFC300;
     --amber-light: #FFD966;
-    
-    /* الخلفيات */
     --dark: #0B0B0F;
     --dark-2: #14141F;
     --dark-3: #1F1F2E;
     --light: #FFFEF9;
     --cream: #FDF9EC;
     --cream-2: #F8F0D8;
-    
-    /* النصوص */
     --text: #1F1F1F;
     --text-light: #6B6B6B;
-    
-    /* الظلال */
     --shadow-sm: 0 5px 20px rgba(0,0,0,0.06);
     --shadow: 0 15px 50px rgba(0,0,0,0.1);
     --shadow-hover: 0 30px 80px rgba(244, 208, 63, 0.4);
     --glow-gold: 0 0 40px rgba(244, 208, 63, 0.5);
-    --glow-amber: 0 0 40px rgba(255, 195, 0, 0.5);
-    
-    /* الحدود */
     --radius: 28px;
     --radius-sm: 18px;
     --radius-lg: 40px;
-    
-    /* الحركات */
     --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     --transition-fast: all 0.3s ease;
-    --transition-slow: all 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html { scroll-behavior: smooth; }
@@ -71,7 +53,6 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* ========== SCROLLBAR ========== */
 ::-webkit-scrollbar { width: 12px; }
 ::-webkit-scrollbar-track { background: var(--dark); }
 ::-webkit-scrollbar-thumb {
@@ -79,597 +60,539 @@ body {
     border-radius: 10px;
     border: 2px solid var(--dark);
 }
-::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, var(--amber), var(--gold), var(--honey));
-}
 
-.container {
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 0 28px;
-}
+.container { max-width: 1320px; margin: 0 auto; padding: 0 28px; }
 
-/* ========== PRELOADER ========== */
+/* PRELOADER */
 .preloader {
-    position: fixed;
-    inset: 0;
-    background: var(--dark);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 99999;
-    transition: opacity 0.8s ease, visibility 0.8s ease;
+    position: fixed; inset: 0; background: var(--dark);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 99999; transition: opacity 0.8s ease, visibility 0.8s ease;
 }
-
-.preloader.hidden {
-    opacity: 0;
-    visibility: hidden;
-}
-
+.preloader.hidden { opacity: 0; visibility: hidden; }
 .preloader-content { text-align: center; }
-
-.gem-loader {
-    font-size: 5rem;
-    animation: gemFloat 2s ease-in-out infinite;
-    display: inline-block;
-    filter: drop-shadow(0 10px 30px rgba(244, 208, 63, 0.8));
-}
-
+.gem-loader { font-size: 5rem; animation: gemFloat 2s ease-in-out infinite; display: inline-block; filter: drop-shadow(0 10px 30px rgba(244, 208, 63, 0.8)); }
 @keyframes gemFloat {
     0%, 100% { transform: translateY(0) rotate(-10deg) scale(1); }
     50% { transform: translateY(-25px) rotate(10deg) scale(1.1); }
 }
-
 .loader-text {
-    font-family: 'Reem Kufi', 'Cairo', sans-serif;
-    font-weight: 700;
-    font-size: 1.8rem;
+    font-family: 'Reem Kufi', sans-serif; font-weight: 700; font-size: 1.8rem;
     background: linear-gradient(135deg, var(--gold), var(--amber), var(--gold), var(--honey));
-    background-size: 300% 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradientShift 2s ease infinite;
-    margin-top: 20px;
-    letter-spacing: 2px;
+    background-size: 300% 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; animation: gradientShift 2s ease infinite;
+    margin-top: 20px; letter-spacing: 2px;
 }
-
 @keyframes gradientShift {
     0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
 }
 
-/* ========== FLOATING WHATSAPP BUTTON ========== */
+/* FLOATING WHATSAPP */
 .whatsapp-float {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 65px;
-    height: 65px;
-    background: linear-gradient(135deg, #25D366, #128C7E);
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    z-index: 9998;
-    box-shadow: 0 10px 40px rgba(37, 211, 102, 0.6), 0 0 0 0 rgba(37, 211, 102, 0.7);
-    text-decoration: none;
-    transition: var(--transition);
+    position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px;
+    background: linear-gradient(135deg, #25D366, #128C7E); color: #fff;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 2rem; z-index: 9998; box-shadow: 0 10px 40px rgba(37, 211, 102, 0.6);
+    text-decoration: none; transition: var(--transition);
     animation: whatsappPulse 2s ease-in-out infinite;
 }
-
-.whatsapp-float:hover {
-    transform: scale(1.15) rotate(10deg);
-    box-shadow: 0 15px 60px rgba(37, 211, 102, 0.8);
-}
-
+.whatsapp-float:hover { transform: scale(1.15) rotate(10deg); }
 @keyframes whatsappPulse {
     0%, 100% { box-shadow: 0 10px 40px rgba(37, 211, 102, 0.6), 0 0 0 0 rgba(37, 211, 102, 0.7); }
     50% { box-shadow: 0 10px 40px rgba(37, 211, 102, 0.6), 0 0 0 25px rgba(37, 211, 102, 0); }
 }
 
-/* ========== NAVBAR ========== */
+/* NAVBAR */
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    padding: 18px 0;
-    transition: var(--transition);
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+    padding: 18px 0; transition: var(--transition);
 }
-
 .navbar.scrolled {
     background: rgba(11, 11, 15, 0.92);
     backdrop-filter: blur(30px) saturate(180%);
-    -webkit-backdrop-filter: blur(30px) saturate(180%);
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(244, 208, 63, 0.2);
+    padding: 12px 0; border-bottom: 1px solid rgba(244, 208, 63, 0.2);
     box-shadow: 0 8px 40px rgba(0,0,0,0.3);
 }
-
-.navbar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 1.7rem;
-    font-weight: 900;
-    text-decoration: none;
-    font-family: 'Reem Kufi', 'Cairo', sans-serif;
-    transition: var(--transition);
-}
-
+.navbar .container { display: flex; justify-content: space-between; align-items: center; }
+.logo { display: flex; align-items: center; gap: 12px; font-size: 1.7rem; font-weight: 900; text-decoration: none; font-family: 'Reem Kufi', sans-serif; }
 .logo-icon {
-    width: 55px;
-    height: 55px;
+    width: 55px; height: 55px;
     background: linear-gradient(135deg, var(--gold), var(--amber), var(--honey));
-    background-size: 200% 200%;
-    animation: gradientShift 4s ease infinite;
-    border-radius: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--dark);
-    font-size: 1.8rem;
+    background-size: 200% 200%; animation: gradientShift 4s ease infinite;
+    border-radius: 18px; display: flex; align-items: center; justify-content: center;
+    color: var(--dark); font-size: 1.8rem;
     box-shadow: 0 10px 35px rgba(244, 208, 63, 0.5);
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
+    transition: var(--transition); position: relative; overflow: hidden;
 }
-
 .logo-icon::after {
-    content: '';
-    position: absolute;
-    inset: 0;
+    content: ''; position: absolute; inset: 0;
     background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.8) 50%, transparent 70%);
-    transform: translateX(-150%);
-    transition: transform 0.8s ease;
+    transform: translateX(-150%); transition: transform 0.8s ease;
 }
-
-.logo:hover .logo-icon::after {
-    transform: translateX(150%);
-}
-
-.logo:hover .logo-icon {
-    transform: rotate(-10deg) scale(1.08);
-    box-shadow: 0 15px 45px rgba(244, 208, 63, 0.8);
-}
-
+.logo:hover .logo-icon::after { transform: translateX(150%); }
+.logo:hover .logo-icon { transform: rotate(-10deg) scale(1.08); }
 .logo-text {
     background: linear-gradient(135deg, var(--gold), var(--amber), var(--honey), var(--gold));
-    background-size: 300% 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradientShift 4s ease infinite;
+    background-size: 300% 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; animation: gradientShift 4s ease infinite;
 }
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 4px;
-    align-items: center;
-}
-
+.nav-links { display: flex; list-style: none; gap: 4px; align-items: center; }
 .nav-links a {
-    text-decoration: none;
-    color: rgba(255,255,255,0.85);
-    font-weight: 600;
-    font-size: 1rem;
-    padding: 12px 22px;
-    border-radius: 50px;
+    text-decoration: none; color: rgba(255,255,255,0.85); font-weight: 600;
+    font-size: 1rem; padding: 12px 22px; border-radius: 50px;
     transition: var(--transition-fast);
-    position: relative;
 }
-
-.nav-links a:not(.nav-cta):hover,
-.nav-links a:not(.nav-cta).active {
-    color: var(--gold-light);
-    background: rgba(244, 208, 63, 0.12);
+.nav-links a:not(.nav-cta):hover, .nav-links a:not(.nav-cta).active {
+    color: var(--gold-light); background: rgba(244, 208, 63, 0.12);
 }
-
 .nav-cta {
-    background: linear-gradient(135deg, #25D366, #128C7E) !important;
-    color: #fff !important;
-    font-weight: 800 !important;
-    padding: 12px 28px !important;
+    background: linear-gradient(135deg, #25D366, #128C7E) !important; color: #fff !important;
+    font-weight: 800 !important; padding: 12px 28px !important;
     box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    display: inline-flex; align-items: center; gap: 8px;
 }
-
-.nav-cta:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
-}
-
+.nav-cta:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6); }
 .menu-toggle {
-    display: none;
-    background: rgba(244, 208, 63, 0.15);
-    border: 1px solid rgba(244, 208, 63, 0.4);
-    font-size: 1.4rem;
-    color: var(--gold);
-    cursor: pointer;
-    padding: 10px 14px;
-    border-radius: 12px;
+    display: none; background: rgba(244, 208, 63, 0.15);
+    border: 1px solid rgba(244, 208, 63, 0.4); font-size: 1.4rem;
+    color: var(--gold); cursor: pointer; padding: 10px 14px; border-radius: 12px;
 }
 
-/* ========== HERO ========== */
+/* HERO */
 .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    background: var(--dark);
+    min-height: 100vh; display: flex; align-items: center;
+    position: relative; overflow: hidden; background: var(--dark);
     padding: 120px 0 60px;
 }
-
-.hero-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-}
-
-.hero-bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.4;
-    transform: scale(1.05);
-    animation: slowZoom 20s ease-in-out infinite alternate;
-}
-
-@keyframes slowZoom {
-    from { transform: scale(1); }
-    to { transform: scale(1.15); }
-}
-
+.hero-bg { position: absolute; inset: 0; z-index: 0; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; transform: scale(1.05); animation: slowZoom 20s ease-in-out infinite alternate; }
+@keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.15); } }
 .hero-bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
+    content: ''; position: absolute; inset: 0;
     background: linear-gradient(135deg, rgba(11,11,15,0.95) 0%, rgba(11,11,15,0.75) 50%, rgba(11,11,15,0.92) 100%);
 }
-
-.hero .container {
-    display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    gap: 70px;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-}
-
+.hero .container { display: grid; grid-template-columns: 1.15fr 1fr; gap: 70px; align-items: center; position: relative; z-index: 2; }
 .hero-content .badge-top {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(244, 208, 63, 0.12);
-    border: 1px solid rgba(244, 208, 63, 0.4);
-    color: var(--gold-light);
-    padding: 10px 24px;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    margin-bottom: 30px;
-    backdrop-filter: blur(10px);
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(244, 208, 63, 0.12); border: 1px solid rgba(244, 208, 63, 0.4);
+    color: var(--gold-light); padding: 10px 24px; border-radius: 50px;
+    font-size: 0.9rem; font-weight: 700; margin-bottom: 30px; backdrop-filter: blur(10px);
 }
-
-.badge-top i {
-    color: var(--amber);
-    animation: sparkle 1.5s ease-in-out infinite;
-}
-
+.badge-top i { color: var(--amber); animation: sparkle 1.5s ease-in-out infinite; }
 @keyframes sparkle {
     0%, 100% { transform: scale(1) rotate(0deg); }
     50% { transform: scale(1.3) rotate(20deg); }
 }
-
 .hero-content h1 {
-    font-size: 4.5rem;
-    font-weight: 900;
-    line-height: 1.15;
-    color: #fff;
-    margin-bottom: 30px;
-    font-family: 'Reem Kufi', 'Cairo', sans-serif;
-    letter-spacing: -0.5px;
+    font-size: 4.5rem; font-weight: 900; line-height: 1.15;
+    color: #fff; margin-bottom: 30px; font-family: 'Reem Kufi', sans-serif;
 }
-
 .hero-content h1 .highlight {
     display: inline-block;
-    position: relative;
     background: linear-gradient(135deg, var(--gold) 0%, var(--amber) 50%, var(--honey) 100%);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradientShift 3s ease infinite;
-    font-family: 'Amiri', serif;
-    font-style: italic;
+    background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; animation: gradientShift 3s ease infinite;
+    font-family: 'Amiri', serif; font-style: italic;
     filter: drop-shadow(0 0 20px rgba(244, 208, 63, 0.5));
 }
-
-.hero-content p {
-    font-size: 1.2rem;
-    color: rgba(255,255,255,0.8);
-    margin-bottom: 40px;
-    max-width: 540px;
-    line-height: 1.9;
-}
-
-.hero-content p strong {
-    color: var(--gold-light);
-    font-weight: 700;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 55px;
-}
-
+.hero-content p { font-size: 1.2rem; color: rgba(255,255,255,0.8); margin-bottom: 40px; max-width: 540px; line-height: 1.9; }
+.hero-content p strong { color: var(--gold-light); font-weight: 700; }
+.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 55px; }
 .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 18px 40px;
-    border-radius: 50px;
-    font-size: 1.05rem;
-    font-weight: 800;
-    text-decoration: none;
-    transition: var(--transition);
-    cursor: pointer;
-    border: none;
-    font-family: 'Tajawal', sans-serif;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 18px 40px; border-radius: 50px; font-size: 1.05rem;
+    font-weight: 800; text-decoration: none; transition: var(--transition);
+    cursor: pointer; border: none; font-family: 'Tajawal', sans-serif;
+    position: relative; overflow: hidden;
 }
-
 .btn-primary {
     background: linear-gradient(135deg, var(--gold), var(--honey));
-    color: var(--dark);
-    box-shadow: 0 12px 40px rgba(244, 208, 63, 0.5);
+    color: var(--dark); box-shadow: 0 12px 40px rgba(244, 208, 63, 0.5);
 }
-
-.btn-primary:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 22px 55px rgba(244, 208, 63, 0.7);
-}
-
+.btn-primary:hover { transform: translateY(-6px); box-shadow: 0 22px 55px rgba(244, 208, 63, 0.7); }
 .btn-whatsapp {
-    background: linear-gradient(135deg, #25D366, #128C7E);
-    color: #fff;
+    background: linear-gradient(135deg, #25D366, #128C7E); color: #fff;
     box-shadow: 0 12px 40px rgba(37, 211, 102, 0.4);
 }
-
-.btn-whatsapp:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 22px 55px rgba(37, 211, 102, 0.6);
-}
-
+.btn-whatsapp:hover { transform: translateY(-6px); box-shadow: 0 22px 55px rgba(37, 211, 102, 0.6); }
 .btn-outline {
-    background: rgba(255,255,255,0.05);
-    color: #fff;
-    border: 2px solid rgba(244, 208, 63, 0.5);
-    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.05); color: #fff;
+    border: 2px solid rgba(244, 208, 63, 0.5); backdrop-filter: blur(10px);
 }
-
-.btn-outline:hover {
-    background: rgba(244, 208, 63, 0.15);
-    border-color: var(--gold);
-    color: var(--gold-light);
-    transform: translateY(-6px);
-}
-
-.hero-stats {
-    display: flex;
-    gap: 45px;
-    padding-top: 35px;
-    border-top: 1px solid rgba(244, 208, 63, 0.25);
-}
-
+.btn-outline:hover { background: rgba(244, 208, 63, 0.15); border-color: var(--gold); color: var(--gold-light); transform: translateY(-6px); }
+.hero-stats { display: flex; gap: 45px; padding-top: 35px; border-top: 1px solid rgba(244, 208, 63, 0.25); }
 .stat { position: relative; }
-
 .stat:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    left: -22px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1px;
-    height: 45px;
+    content: ''; position: absolute; left: -22px; top: 50%;
+    transform: translateY(-50%); width: 1px; height: 45px;
     background: rgba(244, 208, 63, 0.3);
 }
-
 .stat h3 {
-    font-size: 2.4rem;
-    font-weight: 900;
+    font-size: 2.4rem; font-weight: 900;
     background: linear-gradient(135deg, var(--gold), var(--amber));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-family: 'Reem Kufi', 'Cairo', sans-serif;
-    line-height: 1.2;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; font-family: 'Reem Kufi', sans-serif; line-height: 1.2;
 }
-
-.stat p {
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.6);
-    margin: 0;
-}
-
-/* Hero Visual */
-.hero-visual {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
+.stat p { font-size: 0.9rem; color: rgba(255,255,255,0.6); margin: 0; }
+.hero-visual { position: relative; display: flex; justify-content: center; align-items: center; }
 .hero-image-container {
-    position: relative;
-    width: 100%;
-    max-width: 480px;
-    aspect-ratio: 4/5;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
+    position: relative; width: 100%; max-width: 480px; aspect-ratio: 4/5;
+    border-radius: var(--radius-lg); overflow: hidden;
     box-shadow: 0 40px 100px rgba(244, 208, 63, 0.5),
                 0 0 0 15px rgba(244, 208, 63, 0.1),
                 0 0 0 30px rgba(244, 208, 63, 0.05);
     animation: floatSlow 6s ease-in-out infinite;
 }
-
-@keyframes floatSlow {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-}
-
-.hero-image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 1.2s ease;
-}
-
-.hero-image-container:hover img {
-    transform: scale(1.08);
-}
-
-.hero-image-container::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 50%, rgba(11,11,15,0.6));
-}
-
+@keyframes floatSlow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+.hero-image-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
+.hero-image-container:hover img { transform: scale(1.08); }
+.hero-image-container::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(11,11,15,0.6)); }
 .floating-badge {
-    position: absolute;
-    background: rgba(20, 20, 31, 0.9);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(244, 208, 63, 0.4);
-    padding: 14px 22px;
-    border-radius: 18px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-weight: 700;
-    font-size: 0.9rem;
-    color: #fff;
+    position: absolute; background: rgba(20, 20, 31, 0.9);
+    backdrop-filter: blur(20px); border: 1px solid rgba(244, 208, 63, 0.4);
+    padding: 14px 22px; border-radius: 18px; display: flex; align-items: center;
+    gap: 12px; font-weight: 700; font-size: 0.9rem; color: #fff;
     animation: float 4s ease-in-out infinite;
     box-shadow: 0 15px 40px rgba(0,0,0,0.4), 0 0 30px rgba(244, 208, 63, 0.2);
     z-index: 3;
 }
-
-.floating-badge i {
-    color: var(--amber);
-    font-size: 1.3rem;
-}
-
+.floating-badge i { color: var(--amber); font-size: 1.3rem; }
 .badge-1 { top: 5%; right: -10%; animation-delay: 0s; }
 .badge-2 { bottom: 22%; left: -14%; animation-delay: 1.5s; }
 .badge-3 { bottom: 5%; right: -8%; animation-delay: 0.8s; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-}
-
-/* ========== TRUST BAR ========== */
+/* TRUST BAR */
 .trust-bar {
-    background: var(--dark-2);
-    padding: 35px 0;
+    background: var(--dark-2); padding: 35px 0;
     border-top: 1px solid rgba(244, 208, 63, 0.15);
     border-bottom: 1px solid rgba(244, 208, 63, 0.15);
-    position: relative;
-    overflow: hidden;
 }
-
-.trust-inner {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 30px;
-}
-
-.trust-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    color: #fff;
-    font-weight: 700;
-    font-size: 1rem;
-}
-
+.trust-inner { display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 30px; }
+.trust-item { display: flex; align-items: center; gap: 14px; color: #fff; font-weight: 700; font-size: 1rem; }
 .trust-item i {
     font-size: 1.8rem;
     background: linear-gradient(135deg, var(--gold), var(--amber));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 
-/* ========== SECTION TITLE ========== */
-.section-title {
-    text-align: center;
-    margin-bottom: 80px;
-}
-
+/* SECTION TITLE */
+.section-title { text-align: center; margin-bottom: 80px; }
 .section-title .subtitle {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
+    display: inline-flex; align-items: center; gap: 10px;
     background: linear-gradient(135deg, rgba(244, 208, 63, 0.15), rgba(230, 168, 23, 0.15));
-    color: var(--gold-dark);
-    padding: 10px 26px;
-    border-radius: 50px;
-    font-weight: 800;
-    font-size: 0.9rem;
-    margin-bottom: 20px;
+    color: var(--gold-dark); padding: 10px 26px; border-radius: 50px;
+    font-weight: 800; font-size: 0.9rem; margin-bottom: 20px;
     border: 1px solid rgba(244, 208, 63, 0.4);
 }
-
 .section-title h2 {
-    font-size: 3.4rem;
-    font-weight: 900;
-    color: var(--dark);
-    font-family: 'Reem Kufi', 'Cairo', sans-serif;
-    margin-bottom: 18px;
-    line-height: 1.2;
+    font-size: 3.4rem; font-weight: 900; color: var(--dark);
+    font-family: 'Reem Kufi', sans-serif; margin-bottom: 18px; line-height: 1.2;
 }
-
 .section-title h2 .gradient-text {
     background: linear-gradient(135deg, var(--gold-dark), var(--honey), var(--gold));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.section-title p { color: var(--text-light); font-size: 1.15rem; max-width: 650px; margin: 0 auto; line-height: 1.8; }
+
+/* PRODUCTS */
+.products { padding: 140px 0; background: var(--cream); position: relative; overflow: hidden; }
+.products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; position: relative; z-index: 2; }
+.product-card {
+    background: #fff; border-radius: var(--radius); overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.06); transition: var(--transition);
+    border: 1px solid rgba(244, 208, 63, 0.15);
+}
+.product-card:hover { transform: translateY(-15px); box-shadow: var(--shadow-hover); border-color: rgba(244, 208, 63, 0.5); }
+.product-image { position: relative; height: 300px; overflow: hidden; }
+.product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+.product-card:hover .product-image img { transform: scale(1.12); }
+.product-badge {
+    position: absolute; top: 20px; right: 20px;
+    background: linear-gradient(135deg, var(--gold), var(--honey));
+    color: var(--dark); padding: 8px 18px; border-radius: 50px;
+    font-size: 0.8rem; font-weight: 800;
+    box-shadow: 0 6px 20px rgba(244, 208, 63, 0.5); z-index: 3;
+}
+.product-info { padding: 28px; }
+.product-rating { display: flex; gap: 3px; margin-bottom: 12px; }
+.product-rating i { color: var(--gold); font-size: 0.9rem; }
+.product-info h3 { font-size: 1.3rem; font-weight: 800; color: var(--dark); margin-bottom: 10px; font-family: 'Reem Kufi', sans-serif; }
+.product-info .desc { color: var(--text-light); font-size: 0.92rem; margin-bottom: 18px; line-height: 1.7; min-height: 50px; }
+.product-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 18px; border-top: 1px dashed rgba(244, 208, 63, 0.3); }
+.product-price { font-size: 1.5rem; font-weight: 900; color: var(--gold-dark); font-family: 'Reem Kufi', sans-serif; display: flex; align-items: baseline; gap: 4px; }
+.product-price small { font-size: 0.8rem; color: var(--text-light); font-weight: 400; }
+.add-to-cart {
+    background: linear-gradient(135deg, #25D366, #128C7E); color: #fff; border: none;
+    width: 50px; height: 50px; border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; font-size: 1.2rem;
+    cursor: pointer; transition: var(--transition);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4); text-decoration: none;
+}
+.add-to-cart:hover { transform: scale(1.15) rotate(10deg); box-shadow: 0 12px 30px rgba(37, 211, 102, 0.7); }
+
+/* STORY */
+.story { padding: 140px 0; background: var(--light); position: relative; overflow: hidden; }
+.story .container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.story-images { position: relative; height: 600px; }
+.story-img { position: absolute; border-radius: var(--radius); overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.15); transition: var(--transition); }
+.story-img img { width: 100%; height: 100%; object-fit: cover; }
+.story-img-1 { width: 65%; height: 70%; top: 0; right: 0; z-index: 2; }
+.story-img-2 { width: 55%; height: 55%; bottom: 0; left: 0; z-index: 3; border: 8px solid var(--light); }
+.story-img-3 { width: 35%; height: 35%; bottom: 15%; right: 5%; z-index: 4; border: 6px solid var(--light); }
+.story-img:hover { transform: scale(1.05) rotate(-2deg); }
+.story-badge {
+    position: absolute; top: 45%; right: 60%;
+    background: linear-gradient(135deg, var(--gold), var(--honey));
+    color: var(--dark); padding: 20px 26px; border-radius: 22px;
+    text-align: center; box-shadow: 0 20px 50px rgba(244, 208, 63, 0.5);
+    z-index: 5; animation: float 4s ease-in-out infinite;
+}
+.story-badge h4 { font-size: 2.2rem; font-weight: 900; font-family: 'Reem Kufi', sans-serif; line-height: 1; }
+.story-badge p { font-size: 0.85rem; font-weight: 700; margin: 0; }
+.story-content .subtitle {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: linear-gradient(135deg, rgba(244, 208, 63, 0.15), rgba(230, 168, 23, 0.15));
+    color: var(--gold-dark); padding: 10px 26px; border-radius: 50px;
+    font-weight: 800; font-size: 0.9rem; margin-bottom: 20px;
+    border: 1px solid rgba(244, 208, 63, 0.4);
+}
+.story-content h2 {
+    font-size: 2.8rem; font-weight: 900; color: var(--dark);
+    font-family: 'Reem Kufi', sans-serif; margin-bottom: 22px; line-height: 1.25;
+}
+.story-content h2 .gradient-text {
+    background: linear-gradient(135deg, var(--gold-dark), var(--honey), var(--gold));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.story-content p { color: var(--text-light); font-size: 1.05rem; line-height: 1.9; margin-bottom: 24px; }
+.story-features { list-style: none; margin-bottom: 36px; }
+.story-features li { display: flex; align-items: center; gap: 14px; padding: 12px 0; color: var(--text); font-weight: 600; font-size: 1rem; }
+.story-features li i {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg, rgba(244, 208, 63, 0.15), rgba(230, 168, 23, 0.15));
+    color: var(--gold-dark); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; flex-shrink: 0;
 }
 
-.section-title p {
-    color: var(--text-light);
-    font-size: 1.15rem;
-    max-width: 650px;
-    margin: 0 auto;
-    line-height: 1.8;
+/* CATEGORIES */
+.categories { padding: 140px 0; background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 50%, var(--dark-3) 100%); position: relative; overflow: hidden; }
+.categories .section-title h2 { color: #fff; }
+.categories .section-title p { color: rgba(255,255,255,0.6); }
+.categories .section-title .subtitle { background: rgba(244, 208, 63, 0.15); color: var(--gold-light); border-color: rgba(244, 208, 63, 0.3); }
+.categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; position: relative; z-index: 2; }
+.category-card {
+    position: relative; height: 400px; border-radius: var(--radius);
+    overflow: hidden; cursor: pointer; transition: var(--transition);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+.category-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+.category-card:hover img { transform: scale(1.15); }
+.category-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 30%, rgba(11,11,15,0.95));
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 32px; transition: var(--transition);
+}
+.category-card:hover .category-overlay { background: linear-gradient(180deg, rgba(244, 208, 63, 0.2) 0%, rgba(11,11,15,0.95) 70%); }
+.category-overlay h3 { color: #fff; font-size: 1.5rem; font-weight: 800; font-family: 'Reem Kufi', sans-serif; margin-bottom: 8px; }
+.category-overlay p { color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 16px; }
+.category-overlay .category-link { display: inline-flex; align-items: center; gap: 8px; color: var(--gold); font-weight: 700; font-size: 0.9rem; text-decoration: none; transition: var(--transition-fast); }
+.category-card:hover .category-link { gap: 14px; color: var(--amber); }
+
+/* FEATURES */
+.features { padding: 140px 0; background: var(--light); }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+.feature-card {
+    background: #fff; border-radius: var(--radius); padding: 45px 32px;
+    text-align: center; transition: var(--transition);
+    border: 1px solid rgba(244, 208, 63, 0.15);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    position: relative; overflow: hidden;
+}
+.feature-card::before {
+    content: ''; position: absolute; top: 0; right: 0; width: 100%; height: 4px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--amber), var(--gold), transparent);
+    transform: translateX(-100%); transition: transform 0.7s ease;
+}
+.feature-card:hover::before { transform: translateX(100%); }
+.feature-card:hover { transform: translateY(-12px); box-shadow: var(--shadow-hover); border-color: rgba(244, 208, 63, 0.5); }
+.feature-icon {
+    width: 90px; height: 90px; margin: 0 auto 26px;
+    background: linear-gradient(135deg, var(--gold), var(--honey));
+    border-radius: 26px; display: flex; align-items: center; justify-content: center;
+    font-size: 2.2rem; color: var(--dark);
+    box-shadow: 0 15px 40px rgba(244, 208, 63, 0.4);
+    transition: var(--transition); transform: rotate(-8deg);
+}
+.feature-card:hover .feature-icon { transform: rotate(8deg) scale(1.1); }
+.feature-card h3 { color: var(--dark); font-size: 1.25rem; font-weight: 800; margin-bottom: 14px; font-family: 'Reem Kufi', sans-serif; }
+.feature-card p { color: var(--text-light); font-size: 0.95rem; line-height: 1.8; }
+
+/* TESTIMONIALS */
+.testimonials { padding: 140px 0; background: var(--cream); position: relative; overflow: hidden; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+.testimonial-card {
+    background: #fff; border-radius: var(--radius); padding: 40px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.06); transition: var(--transition);
+    border: 1px solid rgba(244, 208, 63, 0.15); position: relative;
+}
+.testimonial-card::before {
+    content: '"'; position: absolute; top: 20px; left: 30px;
+    font-size: 6rem; color: rgba(244, 208, 63, 0.15);
+    font-family: 'Reem Kufi', sans-serif; line-height: 1;
+}
+.testimonial-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); border-color: rgba(244, 208, 63, 0.5); }
+.testimonial-stars { display: flex; gap: 5px; margin-bottom: 22px; position: relative; z-index: 2; }
+.testimonial-stars i { color: var(--gold); font-size: 1.05rem; }
+.testimonial-card p { color: var(--text-light); font-size: 1rem; line-height: 2; margin-bottom: 28px; position: relative; z-index: 2; }
+.testimonial-author { display: flex; align-items: center; gap: 16px; padding-top: 22px; border-top: 1px solid rgba(244, 208, 63, 0.2); }
+.testimonial-avatar {
+    width: 58px; height: 58px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--honey));
+    display: flex; align-items: center; justify-content: center;
+    color: var(--dark); font-weight: 900; font-size: 1.3rem;
+    box-shadow: 0 8px 20px rgba(244, 208, 63, 0.4); flex-shrink: 0;
+}
+.testimonial-author h4 { font-size: 1.05rem; font-weight: 800; color: var(--dark); margin-bottom: 2px; }
+.testimonial-author span { font-size: 0.85rem; color: var(--text-light); }
+
+/* CTA */
+.cta-section {
+    padding: 130px 0;
+    background: linear-gradient(135deg, var(--gold-dark) 0%, var(--honey) 40%, var(--gold) 70%, var(--amber) 100%);
+    background-size: 300% 300%; animation: gradientShift 8s ease infinite;
+    position: relative; overflow: hidden;
+}
+.cta-content { text-align: center; position: relative; z-index: 2; }
+.cta-content h2 { font-size: 3.5rem; font-weight: 900; color: #fff; margin-bottom: 22px; font-family: 'Reem Kufi', sans-serif; text-shadow: 0 4px 30px rgba(0,0,0,0.15); }
+.cta-content p { color: rgba(255,255,255,0.95); font-size: 1.2rem; margin-bottom: 40px; max-width: 620px; margin-left: auto; margin-right: auto; }
+.btn-white {
+    background: #fff; color: var(--gold-dark);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    font-size: 1.15rem; padding: 20px 48px;
+}
+.btn-white:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 25px 60px rgba(0,0,0,0.3); color: var(--honey-dark); }
+
+/* FOOTER */
+.footer { background: var(--dark); color: rgba(255,255,255,0.7); padding: 90px 0 0; position: relative; }
+.footer::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.footer-brand .logo { margin-bottom: 24px; }
+.footer-brand p { font-size: 0.95rem; line-height: 1.9; margin-bottom: 28px; max-width: 340px; }
+.social-links { display: flex; gap: 12px; }
+.social-links a {
+    width: 46px; height: 46px; border-radius: 14px;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.7); text-decoration: none;
+    transition: var(--transition); font-size: 1.1rem;
+}
+.social-links a:hover {
+    background: linear-gradient(135deg, var(--gold), var(--honey));
+    color: var(--dark); border-color: transparent;
+    transform: translateY(-5px); box-shadow: 0 10px 25px rgba(244, 208, 63, 0.4);
+}
+.social-links a.whatsapp-link { background: linear-gradient(135deg, #25D366, #128C7E); color: #fff; border-color: transparent; }
+.social-links a.whatsapp-link:hover { box-shadow: 0 10px 25px rgba(37, 211, 102, 0.6); }
+.footer-col h3 {
+    color: #fff; font-size: 1.15rem; font-weight: 800;
+    margin-bottom: 26px; font-family: 'Reem Kufi', sans-serif;
+    position: relative; padding-bottom: 12px;
+}
+.footer-col h3::after {
+    content: ''; position: absolute; bottom: 0; right: 0;
+    width: 40px; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--honey));
+    border-radius: 2px;
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 14px; }
+.footer-col ul a {
+    color: rgba(255,255,255,0.6); text-decoration: none;
+    transition: var(--transition-fast); font-size: 0.95rem;
+    display: inline-flex; align-items: center; gap: 8px;
+}
+.footer-col ul a:hover { color: var(--gold); transform: translateX(-6px); }
+.footer-contact li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px; font-size: 0.95rem; line-height: 1.7; }
+.footer-contact li i { color: var(--gold); margin-top: 5px; font-size: 1.05rem; }
+.footer-contact li a.whatsapp-num { color: #25D366; font-weight: 800; text-decoration: none; }
+.footer-bottom { padding: 30px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 0.9rem; }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(60px); transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }
+.reveal-delay-4 { transition-delay: 0.6s; }
+
+/* BACK TO TOP */
+.back-to-top {
+    position: fixed; bottom: 30px; left: 30px; width: 55px; height: 55px;
+    border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--honey));
+    color: var(--dark); border: none; display: flex; align-items: center;
+    justify-content: center; font-size: 1.2rem; cursor: pointer;
+    box-shadow: 0 10px 30px rgba(244, 208, 63, 0.5);
+    transition: var(--transition); opacity: 0; visibility: hidden; z-index: 999;
+}
+.back-to-top.show { opacity: 1; visibility: visible; }
+.back-to-top:hover { transform: translateY(-8px) scale(1.1); box-shadow: 0 18px 45px rgba(244, 208, 63, 0.7); }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .hero .container { grid-template-columns: 1fr; text-align: center; gap: 50px; }
+    .hero-content h1 { font-size: 3.2rem; }
+    .hero-content p { margin: 0 auto 36px; }
+    .hero-buttons { justify-content: center; }
+    .hero-stats { justify-content: center; }
+    .hero-visual { order: -1; }
+    .hero-image-container { max-width: 380px; }
+    .floating-badge { display: none; }
+    .story .container { grid-template-columns: 1fr; gap: 60px; }
+    .story-images { height: 500px; max-width: 600px; margin: 0 auto; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed; top: 0; right: -100%; width: 85%; max-width: 380px;
+        height: 100vh; background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 100%);
+        flex-direction: column; padding: 110px 30px 30px;
+        box-shadow: -10px 0 50px rgba(0,0,0,0.3); transition: var(--transition);
+        gap: 6px; align-items: stretch; z-index: 1000;
+    }
+    .nav-links.open { right: 0; }
+    .nav-links a { padding: 16px 22px; border-radius: 14px; background: rgba(244, 208, 63, 0.05); border: 1px solid rgba(244, 208, 63, 0.1); }
+    .menu-toggle { display: block; z-index: 1001; }
+    .hero-content h1 { font-size: 2.4rem; }
+    .hero-stats { flex-direction: column; gap: 20px; align-items: center; }
+    .stat:not(:last-child)::after { display: none; }
+    .section-title h2 { font-size: 2.2rem; }
+    .story-content h2 { font-size: 2rem; }
+    .cta-content h2 { font-size: 2.2rem; }
+    .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .story-images { height: 400px; }
+    .whatsapp-float { width: 55px; height: 55px; font-size: 1.7rem; bottom: 20px; right: 20px; }
+    .back-to-top { width: 48px; height: 48px; bottom: 20px; left: 20px; }
+}
+@media (max-width: 480px) {
+    .hero-content h1 { font-size: 1.9rem; }
+    .btn { padding: 15px 28px; font-size: 0.95rem; }
+    .products, .features, .testimonials, .categories, .story { padding: 90px 0; }
+    .section-title h2 { font-size: 1.8rem; }
+    .story-images { height: 320px; }
 }
 </style>
 </head>
 <body>
 
-<!-- ========== PRELOADER ========== -->
+<!-- PRELOADER -->
 <div class="preloader" id="preloader">
     <div class="preloader-content">
         <div class="gem-loader">💎</div>
@@ -677,18 +600,16 @@ body {
     </div>
 </div>
 
-<!-- ========== FLOATING WHATSAPP ========== -->
+<!-- FLOATING WHATSAPP -->
 <a href="https://wa.me/201274664606" target="_blank" class="whatsapp-float" aria-label="تواصل واتساب">
     <i class="fab fa-whatsapp"></i>
 </a>
 
-<!-- ========== NAVBAR ========== -->
+<!-- NAVBAR -->
 <nav class="navbar" id="navbar">
     <div class="container">
         <a href="#" class="logo">
-            <div class="logo-icon">
-                <i class="fas fa-gem"></i>
-            </div>
+            <div class="logo-icon"><i class="fas fa-gem"></i></div>
             <span class="logo-text">كنوز الطبيعة</span>
         </a>
         <ul class="nav-links" id="navLinks">
@@ -705,7 +626,7 @@ body {
     </div>
 </nav>
 
-<!-- ========== HERO ========== -->
+<!-- HERO -->
 <section class="hero" id="home">
     <div class="hero-bg">
         <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=1920&q=80" alt="عسل طبيعي">
@@ -719,12 +640,8 @@ body {
             <h1 class="reveal reveal-delay-1">كنوز <span class="highlight">الطبيعة</span><br>من أجود أنواع العسل</h1>
             <p class="reveal reveal-delay-2">من مناحلنا الخاصة إلى مائدتك، نقدم لك عسلاً خاماً <strong>100% طبيعي</strong> بدون أي إضافات أو مواد حافظة. كنوز حقيقية من قلب الطبيعة.</p>
             <div class="hero-buttons reveal reveal-delay-3">
-                <a href="#products" class="btn btn-primary">
-                    <i class="fas fa-shopping-bag"></i> تسوق الآن
-                </a>
-                <a href="https://wa.me/201274664606" target="_blank" class="btn btn-whatsapp">
-                    <i class="fab fa-whatsapp"></i> تواصل واتساب
-                </a>
+                <a href="#products" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> تسوق الآن</a>
+                <a href="https://wa.me/201274664606" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> تواصل واتساب</a>
             </div>
             <div class="hero-stats reveal reveal-delay-4">
                 <div class="stat"><h3>+15</h3><p>سنة خبرة</p></div>
@@ -743,7 +660,7 @@ body {
     </div>
 </section>
 
-<!-- ========== TRUST BAR ========== -->
+<!-- TRUST BAR -->
 <section class="trust-bar">
     <div class="container">
         <div class="trust-inner">
@@ -755,79 +672,72 @@ body {
     </div>
 </section>
 
-<!-- ========== PRODUCTS ========== -->
-<section class="products" id="products" style="padding:140px 0;background:var(--cream);position:relative;overflow:hidden;">
+<!-- PRODUCTS -->
+<section class="products" id="products">
     <div class="container">
         <div class="section-title reveal">
             <span class="subtitle"><i class="fas fa-gem"></i> منتجاتنا الفاخرة</span>
             <h2>تشكيلة <span class="gradient-text">كنوز الطبيعة</span></h2>
             <p>اكتشف مجموعتنا المختارة بعناية من أجود أنواع العسل الطبيعي</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;position:relative;z-index:2;">
-            <!-- Product 1 -->
-            <div class="product-card reveal" style="background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.06);transition:var(--transition);border:1px solid rgba(244,208,63,0.15);">
-                <div style="position:relative;height:300px;overflow:hidden;">
-                    <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&q=80" alt="عسل السدر" style="width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(0.16,1,0.3,1);" onmouseover="this.style.transform='scale(1.12)'" onmouseout="this.style.transform='scale(1)'">
-                    <span style="position:absolute;top:20px;right:20px;background:linear-gradient(135deg,var(--gold),var(--honey));color:var(--dark);padding:8px 18px;border-radius:50px;font-size:0.8rem;font-weight:800;box-shadow:0 6px 20px rgba(244,208,63,0.5);">🔥 الأكثر مبيعاً</span>
+        <div class="products-grid">
+            <div class="product-card reveal">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&q=80" alt="عسل السدر">
+                    <span class="product-badge">🔥 الأكثر مبيعاً</span>
                 </div>
-                <div style="padding:28px;">
-                    <div style="display:flex;gap:3px;margin-bottom:12px;"><i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i><i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i><i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i><i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i><i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i></div>
-                    <h3 style="font-size:1.3rem;font-weight:800;color:var(--dark);margin-bottom:10px;font-family:'Reem Kufi',sans-serif;">عسل السدر الجبلي</h3>
-                    <p style="color:var(--text-light);font-size:0.92rem;margin-bottom:18px;line-height:1.7;">عسل خام من مناحل جبال السروات، غني بالمعادن ومضادات الأكسدة</p>
-                    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:18px;border-top:1px dashed rgba(244,208,63,0.4);">
-                        <div style="font-size:1.5rem;font-weight:900;color:var(--gold-dark);font-family:'Reem Kufi',sans-serif;">250 <small style="font-size:0.8rem;color:var(--text-light);font-weight:400;">ر.س</small></div>
-                        <a href="https://wa.me/201274664606?text=أريد طلب عسل السدر الجبلي" target="_blank" style="background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;transition:var(--transition);box-shadow:0 8px 20px rgba(37,211,102,0.4);text-decoration:none;"><i class="fab fa-whatsapp"></i></a>
+                <div class="product-info">
+                    <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <h3>عسل السدر الجبلي</h3>
+                    <p class="desc">عسل خام من مناحل جبال السروات، غني بالمعادن ومضادات الأكسدة</p>
+                    <div class="product-footer">
+                        <div class="product-price">250 <small>ر.س</small></div>
+                        <a href="https://wa.me/201274664606?text=أريد طلب عسل السدر الجبلي" target="_blank" class="add-to-cart" aria-label="اطلب واتساب"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
-
-            <!-- Product 2 -->
-            <div class="product-card reveal reveal-delay-1" style="background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.06);transition:var(--transition);border:1px solid rgba(244,208,63,0.15);">
-                <div style="position:relative;height:300px;overflow:hidden;">
-                    <img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=600&q=80" alt="عسل المانوكا" style="width:100%;height:100%;object-fit:cover;transition:transform 1.2s;" onmouseover="this.style.transform='scale(1.12)'" onmouseout="this.style.transform='scale(1)'">
-                    <span style="position:absolute;top:20px;right:20px;background:linear-gradient(135deg,var(--gold),var(--honey));color:var(--dark);padding:8px 18px;border-radius:50px;font-size:0.8rem;font-weight:800;box-shadow:0 6px 20px rgba(244,208,63,0.5);">✨ فاخر</span>
+            <div class="product-card reveal reveal-delay-1">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=600&q=80" alt="عسل المانوكا">
+                    <span class="product-badge">✨ فاخر</span>
                 </div>
-                <div style="padding:28px;">
-                    <div style="display:flex;gap:3px;margin-bottom:12px;"><i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i><i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i><i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i><i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i><i class="fas fa-star-half-alt" style="color:var(--gold);font-size:0.9rem;"></i></div>
-                    <h3 style="font-size:1.3rem;font-weight:800;color:var(--dark);margin-bottom:10px;font-family:'Reem Kufi',sans-serif;">عسل المانوكا النيوزيلندي</h3>
-                    <p style="color:var(--text-light);font-size:0.92rem;margin-bottom:18px;line-height:1.7;">عسل مانوكا أصلي بدرجة MGO 850+، معروف بخصائصه العلاجية</p>
-                    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:18px;border-top:1px dashed rgba(244,208,63,0.4);">
-                        <div style="font-size:1.5rem;font-weight:900;color:var(--gold-dark);font-family:'Reem Kufi',sans-serif;">480 <small style="font-size:0.8rem;color:var(--text-light);font-weight:400;">ر.س</small></div>
-                        <a href="https://wa.me/201274664606?text=أريد طلب عسل المانوكا" target="_blank" style="background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;box-shadow:0 8px 20px rgba(37,211,102,0.4);text-decoration:none;"><i class="fab fa-whatsapp"></i></a>
+                <div class="product-info">
+                    <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <h3>عسل المانوكا النيوزيلندي</h3>
+                    <p class="desc">عسل مانوكا أصلي بدرجة MGO 850+، معروف بخصائصه العلاجية</p>
+                    <div class="product-footer">
+                        <div class="product-price">480 <small>ر.س</small></div>
+                        <a href="https://wa.me/201274664606?text=أريد طلب عسل المانوكا" target="_blank" class="add-to-cart"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
-
-            <!-- Product 3 -->
-            <div class="product-card reveal reveal-delay-2" style="background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.06);transition:var(--transition);border:1px solid rgba(244,208,63,0.15);">
-                <div style="position:relative;height:300px;overflow:hidden;">
-                    <img src="https://images.unsplash.com/photo-1471943311424-646960669fbc?w=600&q=80" alt="عسل الأكاسيا" style="width:100%;height:100%;object-fit:cover;transition:transform 1.2s;" onmouseover="this.style.transform='scale(1.12)'" onmouseout="this.style.transform='scale(1)'">
-                    <span style="position:absolute;top:20px;right:20px;background:linear-gradient(135deg,var(--gold),var(--honey));color:var(--dark);padding:8px 18px;border-radius:50px;font-size:0.8rem;font-weight:800;box-shadow:0 6px 20px rgba(244,208,63,0.5);">🆕 جديد</span>
+            <div class="product-card reveal reveal-delay-2">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1471943311424-646960669fbc?w=600&q=80" alt="عسل الأكاسيا">
+                    <span class="product-badge">🆕 جديد</span>
                 </div>
-                <div style="padding:28px;">
-                    <div style="display:flex;gap:3px;margin-bottom:12px;"><i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i><i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i><i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i><i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i><i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i></div>
-                    <h3 style="font-size:1.3rem;font-weight:800;color:var(--dark);margin-bottom:10px;font-family:'Reem Kufi',sans-serif;">عسل الأكاسيا الذهبي</h3>
-                    <p style="color:var(--text-light);font-size:0.92rem;margin-bottom:18px;line-height:1.7;">عسل فاتح اللون بنكهة زهرية رقيقة، مثالي للتحلية والتخسيس</p>
-                    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:18px;border-top:1px dashed rgba(244,208,63,0.4);">
-                        <div style="font-size:1.5rem;font-weight:900;color:var(--gold-dark);font-family:'Reem Kufi',sans-serif;">180 <small style="font-size:0.8rem;color:var(--text-light);font-weight:400;">ر.س</small></div>
-                        <a href="https://wa.me/201274664606?text=أريد طلب عسل الأكاسيا الذهبي" target="_blank" style="background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;box-shadow:0 8px 20px rgba(37,211,102,0.4);text-decoration:none;"><i class="fab fa-whatsapp"></i></a>
+                <div class="product-info">
+                    <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <h3>عسل الأكاسيا الذهبي</h3>
+                    <p class="desc">عسل فاتح اللون بنكهة زهرية رقيقة، مثالي للتحلية والتخسيس</p>
+                    <div class="product-footer">
+                        <div class="product-price">180 <small>ر.س</small></div>
+                        <a href="https://wa.me/201274664606?text=أريد طلب عسل الأكاسيا" target="_blank" class="add-to-cart"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
-
-            <!-- Product 4 -->
-            <div class="product-card reveal reveal-delay-3" style="background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.06);transition:var(--transition);border:1px solid rgba(244,208,63,0.15);">
-                <div style="position:relative;height:300px;overflow:hidden;">
-                    <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&q=80" alt="عسل الزهور البرية" style="width:100%;height:100%;object-fit:cover;transition:transform 1.2s;" onmouseover="this.style.transform='scale(1.12)'" onmouseout="this.style.transform='scale(1)'">
-                    <span style="position:absolute;top:20px;right:20px;background:linear-gradient(135deg,var(--gold),var(--honey));color:var(--dark);padding:8px 18px;border-radius:50px;font-size:0.8rem;font-weight:800;box-shadow:0 6px 20px rgba(244,208,63,0.5);">🌿 طبيعي</span>
+            <div class="product-card reveal reveal-delay-3">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&q=80" alt="عسل الزهور البرية">
+                    <span class="product-badge">🌿 طبيعي</span>
                 </div>
-                <div style="padding:28px;">
-                    <div style="display:flex;gap:3px;margin-bottom:12px;"><i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i><i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i><i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i><i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i><i class="fas fa-star-half-alt" style="color:var(--gold);font-size:0.9rem;"></i></div>
-                    <h3 style="font-size:1.3rem;font-weight:800;color:var(--dark);margin-bottom:10px;font-family:'Reem Kufi',sans-serif;">عسل الزهور البرية</h3>
-                    <p style="color:var(--text-light);font-size:0.92rem;margin-bottom:18px;line-height:1.7;">خلطة فريدة من رحيق الزهور البرية، نكهة غنية وعميقة</p>
-                    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:18px;border-top:1px dashed rgba(244,208,63,0.4);">
-                        <div style="font-size:1.5rem;font-weight:900;color:var(--gold-dark);font-family:'Reem Kufi',sans-serif;">150 <small style="font-size:0.8rem;color:var(--text-light);font-weight:400;">ر.س</small></div>
-                        <a href="https://wa.me/201274664606?text=أريد طلب عسل الزهور البرية" target="_blank" style="background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;box-shadow:0 8px 20px rgba(37,211,102,0.4);text-decoration:none;"><i class="fab fa-whatsapp"></i></a>
+                <div class="product-info">
+                    <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <h3>عسل الزهور البرية</h3>
+                    <p class="desc">خلطة فريدة من رحيق الزهور البرية، نكهة غنية وعميقة</p>
+                    <div class="product-footer">
+                        <div class="product-price">150 <small>ر.س</small></div>
+                        <a href="https://wa.me/201274664606?text=أريد طلب عسل الزهور البرية" target="_blank" class="add-to-cart"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
@@ -835,132 +745,195 @@ body {
     </div>
 </section>
 
-<!-- ========== CTA WITH WHATSAPP ========== -->
-<section style="padding:130px 0;background:linear-gradient(135deg,var(--gold-dark) 0%,var(--honey) 40%,var(--gold) 70%,var(--amber) 100%);background-size:300% 300%;animation:gradientShift 8s ease infinite;position:relative;overflow:hidden;text-align:center;">
-    <div class="container" style="position:relative;z-index:2;">
-        <h2 class="reveal" style="font-size:3.5rem;font-weight:900;color:#fff;margin-bottom:22px;font-family:'Reem Kufi',sans-serif;text-shadow:0 4px 30px rgba(0,0,0,0.15);">جاهز لتجربة العسل الأصلي؟</h2>
-        <p class="reveal reveal-delay-1" style="color:rgba(255,255,255,0.95);font-size:1.2rem;margin-bottom:40px;max-width:620px;margin-left:auto;margin-right:auto;">اطلب الآن واحصل على خصم 15% على أول طلب، مع توصيل مجاني لجميع مناطق المملكة</p>
-        <a href="https://wa.me/201274664606?text=أريد الاستفسار عن منتجات كنوز الطبيعة" target="_blank" class="btn reveal reveal-delay-2" style="background:#fff;color:var(--gold-dark);box-shadow:0 15px 40px rgba(0,0,0,0.2);font-size:1.15rem;padding:20px 48px;display:inline-flex;align-items:center;gap:12px;border-radius:50px;text-decoration:none;font-weight:800;">
-            <i class="fab fa-whatsapp" style="font-size:1.5rem;color:#25D366;"></i> تواصل معنا واتساب
-        </a>
-    </div>
-</section>
-
-<!-- ========== FOOTER ========== -->
-<footer style="background:var(--dark);color:rgba(255,255,255,0.7);padding:90px 0 0;position:relative;">
+<!-- STORY -->
+<section class="story" id="story">
     <div class="container">
-        <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:50px;padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,0.08);">
-            <div>
-                <a href="#" class="logo" style="margin-bottom:24px;">
-                    <div class="logo-icon"><i class="fas fa-gem"></i></div>
-                    <span class="logo-text">كنوز الطبيعة</span>
-                </a>
-                <p style="font-size:0.95rem;line-height:1.9;margin-bottom:28px;max-width:340px;">منذ أكثر من 15 عاماً، نقدم أجود أنواع العسل الطبيعي المستخلص من أنقى المناحل حول العالم. جودة تليق بكم.</p>
-                <div style="display:flex;gap:12px;">
-                    <a href="https://wa.me/201274664606" target="_blank" style="width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#25D366,#128C7E);display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-size:1.2rem;"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" style="width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.7);text-decoration:none;"><i class="fab fa-instagram"></i></a>
-                    <a href="#" style="width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.7);text-decoration:none;"><i class="fab fa-facebook-f"></i></a>
+        <div class="story-images reveal">
+            <div class="story-img story-img-1"><img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=800&q=80" alt="مناحلنا"></div>
+            <div class="story-img story-img-2"><img src="https://images.unsplash.com/photo-1471943311424-646960669fbc?w=800&q=80" alt="عسل طبيعي"></div>
+            <div class="story-img story-img-3"><img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&q=80" alt="خلية نحل"></div>
+            <div class="story-badge"><h4>+15</h4><p>سنة من التميز</p></div>
+        </div>
+        <div class="story-content reveal reveal-delay-2">
+            <span class="subtitle"><i class="fas fa-heart"></i> قصتنا</span>
+            <h2>شغفنا بالعسل <span class="gradient-text">يبدأ من الطبيعة</span></h2>
+            <p>بدأت رحلتنا منذ أكثر من 15 عاماً في جبال السروات، حيث تعلمنا من النحل أسرار الطبيعة. اليوم، نقدم لكم خلاصة خبرتنا في كل قطرة عسل، ملتزمين بأعلى معايير الجودة والنقاء.</p>
+            <ul class="story-features">
+                <li><i class="fas fa-check"></i> مناحلنا الخاصة في أنقى المناطق الجبلية</li>
+                <li><i class="fas fa-check"></i> عسل خام غير مبستر ولا مخفف</li>
+                <li><i class="fas fa-check"></i> فحص مخبري لكل دفعة قبل الشحن</li>
+                <li><i class="fas fa-check"></i> تغليف فاخر يحافظ على الجودة</li>
+            </ul>
+            <a href="https://wa.me/201274664606" target="_blank" class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> تواصل معنا
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+    <div class="container">
+        <div class="section-title reveal">
+            <span class="subtitle"><i class="fas fa-th-large"></i> تصفح حسب الفئة</span>
+            <h2>اكتشف <span class="gradient-text">مجموعاتنا</span></h2>
+            <p>اختر من بين تشكيلتنا المتنوعة من العسل الطبيعي</p>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card reveal">
+                <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&q=80" alt="عسل جبلي">
+                <div class="category-overlay">
+                    <h3>العسل الجبلي</h3>
+                    <p>من أعالي الجبال، نكهة قوية وغنية</p>
+                    <a href="https://wa.me/201274664606?text=أريد الاستفسار عن العسل الجبلي" target="_blank" class="category-link">اطلب واتساب <i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
-            <div>
-                <h3 style="color:#fff;font-size:1.15rem;font-weight:800;margin-bottom:26px;font-family:'Reem Kufi',sans-serif;position:relative;padding-bottom:12px;">روابط سريعة</h3>
-                <ul style="list-style:none;">
-                    <li style="margin-bottom:14px;"><a href="#home" style="color:rgba(255,255,255,0.6);text-decoration:none;">الرئيسية</a></li>
-                    <li style="margin-bottom:14px;"><a href="#products" style="color:rgba(255,255,255,0.6);text-decoration:none;">منتجاتنا</a></li>
-                    <li style="margin-bottom:14px;"><a href="#story" style="color:rgba(255,255,255,0.6);text-decoration:none;">قصتنا</a></li>
+            <div class="category-card reveal reveal-delay-1">
+                <img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=800&q=80" alt="عسل علاجي">
+                <div class="category-overlay">
+                    <h3>العسل العلاجي</h3>
+                    <p>خصائص علاجية معتمدة عالمياً</p>
+                    <a href="https://wa.me/201274664606?text=أريد الاستفسار عن العسل العلاجي" target="_blank" class="category-link">اطلب واتساب <i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="category-card reveal reveal-delay-2">
+                <img src="https://images.unsplash.com/photo-1471943311424-646960669fbc?w=800&q=80" alt="عسل فاخر">
+                <div class="category-overlay">
+                    <h3>العسل الفاخر</h3>
+                    <p>تشكيلة ملكية من أندر الأنواع</p>
+                    <a href="https://wa.me/201274664606?text=أريد الاستفسار عن العسل الفاخر" target="_blank" class="category-link">اطلب واتساب <i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+    <div class="container">
+        <div class="section-title reveal">
+            <span class="subtitle"><i class="fas fa-gem"></i> لماذا كنوز الطبيعة؟</span>
+            <h2>نتميز بـ <span class="gradient-text">جودة لا تُضاهى</span></h2>
+            <p>نلتزم بأعلى معايير الجودة من المنحل إلى مائدتك</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card reveal"><div class="feature-icon"><i class="fas fa-leaf"></i></div><h3>طبيعي 100%</h3><p>عسل خام غير مبستر، بدون سكر مضاف أو مواد حافظة أو أي إضافات صناعية</p></div>
+            <div class="feature-card reveal reveal-delay-1"><div class="feature-icon"><i class="fas fa-flask"></i></div><h3>مختبر جودة</h3><p>كل دفعة تخضع لاختبارات معملية دقيقة للتأكد من النقاء والجودة</p></div>
+            <div class="feature-card reveal reveal-delay-2"><div class="feature-icon"><i class="fas fa-truck-fast"></i></div><h3>توصيل سريع</h3><p>توصيل مجاني لجميع المدن الرئيسية خلال 24-48 ساعة مع ضمان السلامة</p></div>
+            <div class="feature-card reveal reveal-delay-3"><div class="feature-icon"><i class="fas fa-medal"></i></div><h3>شهادات معتمدة</h3><p>حاصلون على شهادات الجودة العالمية ISO و HACCP والغذاء والدواء</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+    <div class="container">
+        <div class="section-title reveal">
+            <span class="subtitle"><i class="fas fa-quote-right"></i> آراء عملائنا</span>
+            <h2>ماذا قالوا <span class="gradient-text">عنا؟</span></h2>
+            <p>أكثر من 10,000 عميل يثقون بنا</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>أفضل عسل تذوقته في حياتي! جودة استثنائية وطعم لا يُقاوم. عسل السدر عندهم غيّر مفهومي للعسل الطبيعي تماماً. أنصح الجميع بتجربته.</p>
+                <div class="testimonial-author"><div class="testimonial-avatar">أ</div><div><h4>أحمد السالم</h4><span>عميل دائم منذ 3 سنوات</span></div></div>
+            </div>
+            <div class="testimonial-card reveal reveal-delay-1">
+                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>التعامل راقي جداً والتوصيل سريع. طلبت عسل المانوكا ووصلني خلال يوم واحد بتغليف فاخر. النتيجة فاقت توقعاتي بمراحل.</p>
+                <div class="testimonial-author"><div class="testimonial-avatar">ن</div><div><h4>نورة العتيبي</h4><span>عميلة جديدة</span></div></div>
+            </div>
+            <div class="testimonial-card reveal reveal-delay-2">
+                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                <p>منتج ممتاز وأصلي. جربت أنواع كثيرة من العسل لكن كنوز الطبيعة مختلف تماماً. الطعم والرائحة والقوام كلها تدل على الجودة العالية.</p>
+                <div class="testimonial-author"><div class="testimonial-avatar">م</div><div><h4>محمد الشهري</h4><span>عميل موثق</span></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+    <div class="container">
+        <div class="cta-content reveal">
+            <h2>جاهز لتجربة العسل الأصلي؟</h2>
+            <p>اطلب الآن واحصل على خصم 15% على أول طلب، مع توصيل مجاني لجميع مناطق المملكة</p>
+            <a href="https://wa.me/201274664606?text=أريد طلب منتجات كنوز الطبيعة" target="_blank" class="btn btn-white">
+                <i class="fab fa-whatsapp" style="color:#25D366; font-size:1.5rem;"></i> تواصل معنا واتساب
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo"><div class="logo-icon"><i class="fas fa-gem"></i></div><span class="logo-text">كنوز الطبيعة</span></a>
+                <p>منذ أكثر من 15 عاماً، نقدم أجود أنواع العسل الطبيعي المستخلص من أنقى المناحل حول العالم. جودة تليق بكم.</p>
+                <div class="social-links">
+                    <a href="https://wa.me/201274664606" target="_blank" class="whatsapp-link" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" aria-label="انستغرام"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-angle-left"></i> الرئيسية</a></li>
+                    <li><a href="#products"><i class="fas fa-angle-left"></i> منتجاتنا</a></li>
+                    <li><a href="#story"><i class="fas fa-angle-left"></i> قصتنا</a></li>
+                    <li><a href="#features"><i class="fas fa-angle-left"></i> لماذا نحن</a></li>
                 </ul>
             </div>
-            <div>
-                <h3 style="color:#fff;font-size:1.15rem;font-weight:800;margin-bottom:26px;font-family:'Reem Kufi',sans-serif;position:relative;padding-bottom:12px;">خدمة العملاء</h3>
-                <ul style="list-style:none;">
-                    <li style="margin-bottom:14px;"><a href="#" style="color:rgba(255,255,255,0.6);text-decoration:none;">سياسة الاسترجاع</a></li>
-                    <li style="margin-bottom:14px;"><a href="#" style="color:rgba(255,255,255,0.6);text-decoration:none;">الشحن والتوصيل</a></li>
-                    <li style="margin-bottom:14px;"><a href="#" style="color:rgba(255,255,255,0.6);text-decoration:none;">الأسئلة الشائعة</a></li>
+            <div class="footer-col">
+                <h3>خدمة العملاء</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-angle-left"></i> سياسة الاسترجاع</a></li>
+                    <li><a href="#"><i class="fas fa-angle-left"></i> الشحن والتوصيل</a></li>
+                    <li><a href="#"><i class="fas fa-angle-left"></i> الأسئلة الشائعة</a></li>
+                    <li><a href="#"><i class="fas fa-angle-left"></i> سياسة الخصوصية</a></li>
                 </ul>
             </div>
-            <div>
-                <h3 style="color:#fff;font-size:1.15rem;font-weight:800;margin-bottom:26px;font-family:'Reem Kufi',sans-serif;position:relative;padding-bottom:12px;">تواصل معنا</h3>
-                <ul style="list-style:none;">
-                    <li style="display:flex;align-items:flex-start;gap:12px;margin-bottom:18px;font-size:0.95rem;"><i class="fas fa-map-marker-alt" style="color:var(--gold);margin-top:5px;"></i> الرياض، المملكة العربية السعودية</li>
-                    <li style="display:flex;align-items:flex-start;gap:12px;margin-bottom:18px;font-size:0.95rem;"><i class="fab fa-whatsapp" style="color:#25D366;margin-top:5px;font-size:1.2rem;"></i> <a href="https://wa.me/201274664606" target="_blank" style="color:var(--gold);text-decoration:none;font-weight:700;">01274664606</a></li>
-                    <li style="display:flex;align-items:flex-start;gap:12px;margin-bottom:18px;font-size:0.95rem;"><i class="fas fa-envelope" style="color:var(--gold);margin-top:5px;"></i> info@kanz-altabia.com</li>
+            <div class="footer-col">
+                <h3>تواصل معنا</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</li>
+                    <li><i class="fab fa-whatsapp" style="color:#25D366;font-size:1.3rem;"></i> <a href="https://wa.me/201274664606" target="_blank" class="whatsapp-num">01274664606</a></li>
+                    <li><i class="fas fa-envelope"></i> info@kanz-altabia.com</li>
+                    <li><i class="fas fa-clock"></i> السبت - الخميس: 9ص - 10م</li>
                 </ul>
             </div>
         </div>
-        <div style="padding:30px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:0.9rem;">
+        <div class="footer-bottom">
             <p>© 2024 كنوز الطبيعة. جميع الحقوق محفوظة.</p>
-            <p>صُنع بـ <i class="fas fa-heart" style="color:var(--gold);"></i> في المملكة العربية السعودية</p>
+            <p>صُنع بـ <i class="fas fa-heart" style="color: var(--gold);"></i> في المملكة العربية السعودية</p>
         </div>
     </div>
 </footer>
 
-<!-- ========== BACK TO TOP ========== -->
-<button id="backToTop" style="position:fixed;bottom:30px;left:30px;width:55px;height:55px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--honey));color:var(--dark);border:none;display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;box-shadow:0 10px 30px rgba(244,208,63,0.5);transition:var(--transition);opacity:0;visibility:hidden;z-index:999;" aria-label="العودة للأعلى">
-    <i class="fas fa-arrow-up"></i>
-</button>
-
-<style>
-.reveal { opacity: 0; transform: translateY(60px); transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
-.reveal.active { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: 0.15s; }
-.reveal-delay-2 { transition-delay: 0.3s; }
-.reveal-delay-3 { transition-delay: 0.45s; }
-.reveal-delay-4 { transition-delay: 0.6s; }
-.product-card:hover { transform: translateY(-15px) !important; box-shadow: 0 30px 80px rgba(244,208,63,0.4) !important; border-color: rgba(244,208,63,0.5) !important; }
-@media (max-width: 1024px) {
-    .hero .container { grid-template-columns: 1fr !important; text-align: center !important; gap: 50px !important; }
-    .hero-content h1 { font-size: 3.2rem !important; }
-    .hero-content p { margin: 0 auto 36px !important; }
-    .hero-buttons { justify-content: center !important; }
-    .hero-stats { justify-content: center !important; }
-    .hero-visual { order: -1; }
-    .hero-image-container { max-width: 380px; }
-    .floating-badge { display: none; }
-}
-@media (max-width: 768px) {
-    .nav-links {
-        position: fixed !important; top: 0 !important; right: -100% !important;
-        width: 85% !important; max-width: 380px !important; height: 100vh !important;
-        background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 100%) !important;
-        flex-direction: column !important; padding: 110px 30px 30px !important;
-        box-shadow: -10px 0 50px rgba(0,0,0,0.3) !important; transition: var(--transition) !important;
-        gap: 6px !important; align-items: stretch !important; z-index: 1000 !important;
-    }
-    .nav-links.open { right: 0 !important; }
-    .nav-links a { padding: 16px 22px !important; border-radius: 14px !important; background: rgba(244,208,63,0.05) !important; border: 1px solid rgba(244,208,63,0.15) !important; }
-    .menu-toggle { display: block !important; z-index: 1001 !important; }
-    .hero-content h1 { font-size: 2.4rem !important; }
-    .hero-stats { flex-direction: column !important; gap: 20px !important; align-items: center !important; }
-    .stat:not(:last-child)::after { display: none !important; }
-    .section-title h2 { font-size: 2.2rem !important; }
-    .whatsapp-float { width: 55px; height: 55px; font-size: 1.7rem; bottom: 20px; right: 20px; }
-}
-@media (max-width: 480px) {
-    .hero-content h1 { font-size: 1.9rem !important; }
-    .btn { padding: 15px 28px !important; font-size: 0.95rem !important; }
-    .section-title h2 { font-size: 1.8rem !important; }
-}
-</style>
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
 
 <script>
-// ========== PRELOADER ==========
+// PRELOADER
 window.addEventListener('load', () => {
-    setTimeout(() => {
-        document.getElementById('preloader').classList.add('hidden');
-    }, 1200);
+    setTimeout(() => document.getElementById('preloader').classList.add('hidden'), 1200);
 });
 
-// ========== NAVBAR SCROLL ==========
+// NAVBAR SCROLL
 const navbar = document.getElementById('navbar');
 const backToTop = document.getElementById('backToTop');
 window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    navbar.classList.toggle('scrolled', scrollY > 50);
-    backToTop.style.opacity = scrollY > 500 ? '1' : '0';
-    backToTop.style.visibility = scrollY > 500 ? 'visible' : 'hidden';
+    const y = window.scrollY;
+    navbar.classList.toggle('scrolled', y > 50);
+    backToTop.classList.toggle('show', y > 500);
 });
 
-// ========== MOBILE MENU ==========
+// MOBILE MENU
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
 const menuIcon = menuToggle.querySelector('i');
@@ -977,52 +950,42 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
-// ========== SMOOTH SCROLL ==========
+// SMOOTH SCROLL
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
         if (href === '#') return;
         e.preventDefault();
         const target = document.querySelector(href);
-        if (target) {
-            window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
-        }
+        if (target) window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
     });
 });
 
-// ========== BACK TO TOP ==========
-backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+// BACK TO TOP
+backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-// ========== REVEAL ==========
+// REVEAL
 const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('active');
-    });
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-// ========== ACTIVE NAV ==========
+// ACTIVE NAV
 const sections = document.querySelectorAll('section[id]');
 window.addEventListener('scroll', () => {
     let current = '';
-    sections.forEach(section => {
-        if (window.scrollY >= section.offsetTop - 150) current = section.getAttribute('id');
-    });
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 150) current = s.getAttribute('id'); });
     document.querySelectorAll('.nav-links a:not(.nav-cta)').forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
     });
 });
 
-// ========== PARALLAX ==========
+// PARALLAX
 window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    const heroImage = document.querySelector('.hero-image-container');
-    if (heroImage && scrolled < window.innerHeight) {
-        heroImage.style.transform = `translateY(${scrolled * 0.08}px)`;
-    }
+    const y = window.scrollY;
+    const heroImg = document.querySelector('.hero-image-container');
+    if (heroImg && y < window.innerHeight) heroImg.style.transform = `translateY(${y * 0.08}px)`;
 });
 </script>
 
