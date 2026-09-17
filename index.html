@@ -1167,31 +1167,34 @@ function renderGamesGrid(containerId, games, limit) {
         return;
     }
 
-    container.innerHTML = displayGames.map(game => {
-        const availableVariants = game.variants.filter(v => v.stock);
-        const minPrice = availableVariants.length
-            ? Math.min(...availableVariants.map(v => v.price))
-            : null;
+container.innerHTML = displayGames.map(game => {
+    const availableVariants = game.variants.filter(v => v.stock);
+    const minPrice = availableVariants.length
+        ? Math.min(...availableVariants.map(v => v.price))
+        : null;
 
-        return `
-            <div class="game-card" onclick="showGame('${game.id}')">
-                <div class="game-image">
-                    <img src="${game.cover}" alt="${game.title}" loading="lazy"
-                         onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;display:flex;align-items:center;justify-content:center;height:100%;background:#1A2B4A;color:#A0ABBF;font-size:11px;text-align:center;padding:10px;&quot;>صورة غير متوفرة</div>';">
-                    <span class="game-badge ${game.badgeType}">${game.badge}</span>
-                </div>
-                <div class="game-info">
-                    <h3>${game.title}</h3>
-                    <div class="game-price">
-                        ${minPrice ? `يبدأ من ${minPrice.toLocaleString()} <small>ج.م</small>` : 'غير متاح'}
-                    </div>
+    return `
+        <div class="game-card" onclick="showGame('${game.id}')">
+            <div class="game-image">
+                <img data-src="${game.cover}" 
+                     src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 3'%3E%3Crect fill='%231A2B4A' width='2' height='3'/%3E%3C/svg%3E"
+                     alt="${game.title}"
+                     class="lazy-img">
+                <span class="game-badge ${game.badgeType}">${game.badge}</span>
+            </div>
+            <div class="game-info">
+                <h3>${game.title}</h3>
+                <div class="game-price">
+                    ${minPrice ? `يبدأ من ${minPrice.toLocaleString()} <small>ج.م</small>` : 'غير متاح'}
                 </div>
             </div>
-        `;
-    }).join('');
-}
+        </div>
+    `;
+}).join('');
 
-// ============================================
+// فعّل التحميل الذكي
+lazyLoadImages();
+}// ============================================
 // عرض صفحة اللعبة
 // ============================================
 function showGame(gameId) {
@@ -1379,30 +1382,33 @@ function renderAllGames() {
     noResults.classList.remove('show');
     const displayGames = filtered.slice(0, displayedCount);
 
-    grid.innerHTML = displayGames.map(game => {
-        const availableVariants = game.variants.filter(v => v.stock);
-        const minPrice = availableVariants.length
-            ? Math.min(...availableVariants.map(v => v.price))
-            : null;
+grid.innerHTML = displayGames.map(game => {
+    const availableVariants = game.variants.filter(v => v.stock);
+    const minPrice = availableVariants.length
+        ? Math.min(...availableVariants.map(v => v.price))
+        : null;
 
-        return `
-            <div class="game-card" onclick="showGame('${game.id}')">
-                <div class="game-image">
-                    <img src="${game.cover}" alt="${game.title}" loading="lazy"
-                         onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;display:flex;align-items:center;justify-content:center;height:100%;background:#1A2B4A;color:#A0ABBF;font-size:11px;text-align:center;padding:10px;&quot;>صورة غير متوفرة</div>';">
-                    <span class="game-badge ${game.badgeType}">${game.badge}</span>
-                </div>
-                <div class="game-info">
-                    <h3>${game.title}</h3>
-                    <div class="game-price">
-                        ${minPrice ? `يبدأ من ${minPrice.toLocaleString()} <small>ج.م</small>` : 'غير متاح'}
-                    </div>
+    return `
+        <div class="game-card" onclick="showGame('${game.id}')">
+            <div class="game-image">
+                <img data-src="${game.cover}" 
+                     src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 3'%3E%3Crect fill='%231A2B4A' width='2' height='3'/%3E%3C/svg%3E"
+                     alt="${game.title}"
+                     class="lazy-img">
+                <span class="game-badge ${game.badgeType}">${game.badge}</span>
+            </div>
+            <div class="game-info">
+                <h3>${game.title}</h3>
+                <div class="game-price">
+                    ${minPrice ? `يبدأ من ${minPrice.toLocaleString()} <small>ج.م</small>` : 'غير متاح'}
                 </div>
             </div>
-        `;
-    }).join('');
+        </div>
+    `;
+}).join('');
 
-    loadMoreContainer.style.display = displayedCount < filtered.length ? 'block' : 'none';
+// فعّل التحميل الذكي
+lazyLoadImages();    loadMoreContainer.style.display = displayedCount < filtered.length ? 'block' : 'none';
 }
 
 function loadMore() {
@@ -1474,6 +1480,58 @@ async function init() {
 }
 
 // تشغيل عند فتح الصفحة
+// ============================================
+// التحميل الذكي للصور (Intersection Observer)
+// ============================================
+let imageObserver;
+
+function lazyLoadImages() {
+    const lazyImages = document.querySelectorAll('.lazy-img[data-src]');
+    
+    if (lazyImages.length === 0) return;
+    
+    // لو المتصفح مش بيدعم Intersection Observer
+    if (!('IntersectionObserver' in window)) {
+        lazyImages.forEach(img => {
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+        });
+        return;
+    }
+    
+    // لو مش موجود، اعمله
+    if (!imageObserver) {
+        imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    const realSrc = img.dataset.src;
+                    
+                    if (realSrc) {
+                        img.src = realSrc;
+                        img.removeAttribute('data-src');
+                        img.classList.remove('lazy-img');
+                        
+                        // لو الصورة فشلت في التحميل
+                        img.onerror = function() {
+                            this.style.display = 'none';
+                            if (this.parentElement) {
+                                this.parentElement.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;background:#1A2B4A;color:#A0ABBF;font-size:11px;text-align:center;padding:10px;">صورة غير متوفرة</div>';
+                            }
+                        };
+                    }
+                    
+                    imageObserver.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '200px 0px', // ابدأ التحميل قبل 200px من الظهور
+            threshold: 0.01
+        });
+    }
+    
+    lazyImages.forEach(img => imageObserver.observe(img));
+}
 document.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
